@@ -36,7 +36,6 @@ management:
       enabled: true
 
   server:
-    # port: 8446
     ssl:
       enabled: false
 #      key-store: classpath:management.jks
@@ -60,11 +59,5 @@ springdoc:
     enabled: true
     path: /swagger-ui.html
   show-actuator: true
-  use-management-port: false
-
-# management:
-#   endpoints:
-#     web:
-#       exposure:
-#         include: openapi,swagger-ui
+  use-management-port: true
 # End: OpenApi
