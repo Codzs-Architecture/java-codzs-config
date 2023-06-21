@@ -1,2 +1,66 @@
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8881
+        username: admin
+        password: admin
+        instance:
+          metadata:
+            user:
+              name: ${spring.security.user.name}
+              password: ${spring.security.user.password}
+
+management:
+  endpoints:
+    web:
+      base-path: /admin
+      exposure:
+        include: "*"
+    loggers:
+      enabled: true
+    health:
+      validate-group-membership: false
+      group:
+        db:
+          include: db
+
+  health:
+    db:
+      enabled: true
+    elasticsearch:
+      enabled: true
+    mongo:
+      enabled: true
+    redis:
+      enabled: true
+
+  server:
+    ssl:
+      enabled: false
+#      key-store: classpath:management.jks
+#      key-password: secret
+
+  security:
+    enabled: true
+
+  info:
+    env:
+      enabled: true
+    git:
+      mode: full
+
+# Start: OpenApi
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+  show-actuator: true
+  use-management-port: true
+# End: OpenApi
+
 external:
   property: application-dev.yml
