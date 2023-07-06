@@ -7,6 +7,8 @@ spring:
   jpa:
     generate-ddl: false
 
+hibernate:
+  show_sql: true
 
 external:
   property: application-dev.yml inside java-demo-app
