@@ -14,7 +14,7 @@ spring:
 management:
   endpoints:
     web:
-      base-path: /admin
+      base-path: /management
       exposure:
         include: "*"
     loggers:
