@@ -1,6 +1,36 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    refresh:
+      enabled: true
+    restart:
+      enabled: true
+    shutdown:
+      enabled: true
+    env:
+      post:
+        enabled: true
+    health:
+      show-details: ALWAYS
+
 spring:
+  boot:
+    admin:
+      instance-auth:
+        enabled: true
+  jmx:
+    enabled: true
+  main:
+    lazy-initialization: true
+
   security:
     user:
       name: admin-service-user
       password: password
       roles: MANAGEMENT_ADMIN
+
+hibernate:
+  show_sql: true
