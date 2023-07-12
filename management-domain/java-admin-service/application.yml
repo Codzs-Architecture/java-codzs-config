@@ -1,0 +1,6 @@
+spring:
+  security:
+    user:
+      name: admin-service-user
+      password: password
+      roles: MANAGEMENT_ADMIN
