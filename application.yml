@@ -65,7 +65,7 @@ springdoc:
 # Start: Enable SSL on localhost
 server:
   ssl:
-    key-store: classpath:dev.localhost.com.p12
+    key-store: ${server.ssl.keystore} #classpath:dev.localhost.com.p12
     key-store-password: cerpassword
     key-store-type: pkcs12
     key-password: cerpassword
