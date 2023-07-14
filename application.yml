@@ -61,3 +61,12 @@ springdoc:
   show-actuator: true
   use-management-port: true
 # End: OpenApi
+
+# Start: Enable SSL on localhost
+server:
+  ssl:
+    key-store: classpath:dev.localhost.com.p12
+    key-store-password: cerpassword
+    key-store-type: pkcs12
+    key-password: cerpassword
+# End: Enable SSL on localhost
