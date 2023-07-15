@@ -21,7 +21,7 @@ spring:
             client-name: articles-client-authorization-code
         provider:
           spring:
-            issuer-uri: https://auth-server:5003
+            issuer-uri: https://dev.localhost.com:5003
 
 external:
   property: application.yml in java-client-resource-service
