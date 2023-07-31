@@ -37,9 +37,10 @@ management:
 
   server:
     ssl:
-      enabled: false
-#      key-store: classpath:management.jks
-#      key-password: secret
+      key-store: ${server.ssl.keystore}
+      key-store-password: ${server.ssl.password}
+      key-store-type: pkcs12
+      key-password: ${server.ssl.password}
 
   security:
     enabled: true
