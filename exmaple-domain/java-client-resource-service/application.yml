@@ -21,12 +21,12 @@ spring:
             client-name: articles-client-authorization-code
         provider:
           spring:
-            issuer-uri: https://local.codzs.com:5003
+            issuer-uri: ${authorization.server.url}
 
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${redis.server.host}
+      port: ${redis.server.port}
 
 external:
   property: application.yml in java-client-resource-service
