@@ -1,0 +1,7 @@
+my:
+  url: https://local.codzs.com:8001
+
+oauth2:
+  client:
+    article:
+      secret: secret
