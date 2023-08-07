@@ -8,7 +8,7 @@ spring:
             client-id: articles-client
             client-secret: ${oauth2.client.article.secret}
             authorization-grant-type: authorization_code
-            redirect-uri: "${my.host}/login/oauth2/code/{registrationId}"
+            redirect-uri: "${my.url}/login/oauth2/code/{registrationId}"
             scope: openid
             client-name: articles-client-oidc
           articles-client-authorization-code:
@@ -16,7 +16,7 @@ spring:
             client-id: articles-client
             client-secret: ${oauth2.client.article.secret}
             authorization-grant-type: authorization_code
-            redirect-uri: "${my.host}/authorized"
+            redirect-uri: "${my.url}/authorized"
             scope: articles.read
             client-name: articles-client-authorization-code
         provider:
