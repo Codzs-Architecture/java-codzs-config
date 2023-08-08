@@ -1,0 +1,11 @@
+management:
+  server:
+    base:
+      url: https://local.codzs.com:6003
+
+oauth2:
+  resource:
+    server:
+      jwt:
+        issuer:
+          uri: https://local.codzs.com:5003
