@@ -1,7 +1,6 @@
 my:
   url: https://local.codzs.com:${server.port}
 
-
 management:
   server:
     base:
