@@ -23,7 +23,7 @@ hibernate:
 acl:
   redis:
     cache:
-      key: com.codzs.acl.cache
+      key: com.codzs.acl.cache.local
 
 external:
   property: application-dev.yml inside java-demo-app

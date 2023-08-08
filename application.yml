@@ -33,13 +33,6 @@ management:
     redis:
       enabled: true
 
-  # server:
-  #   ssl:
-  #     key-store: ${server.ssl.keystore}
-  #     key-store-password: ${server.ssl.password}
-  #     key-store-type: pkcs12
-  #     key-password: ${server.ssl.password}
-
   security:
     enabled: true
 
@@ -60,12 +53,3 @@ springdoc:
   show-actuator: true
   use-management-port: true
 # End: OpenApi
-
-# Start: Enable SSL on localhost
-# server:
-#   ssl:
-#     key-store: ${server.ssl.keystore}
-#     key-store-password: ${server.ssl.password}
-#     key-store-type: pkcs12
-#     key-password: ${server.ssl.password}
-# End: Enable SSL on localhost

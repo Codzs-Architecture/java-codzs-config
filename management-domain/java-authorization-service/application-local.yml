@@ -3,7 +3,6 @@ my:
 
 authorization:
   password: '{cipher}AYAfdzcrkjwM4rt2jhkxezO5zBNmfljIeeBFXKsUMV8Q9ASYjBCv2lBtu2L7Se7hEK7DTDc1JxTmkiZW6dn14UhEdbpcSObqknAxiaK7wMBz3e6POdTZeIF1J/kCwBSvccEUGZuog1eZjQav14uE5wYQqyDfqnOPvak4JndzykJBjZ4SSzZNwOUYxQyRaA0gQbgYF+E+ZnY7BpwzfcT2DTpaZDPAYUBLFiCiY6bNbLBC3LS3i/Qq0/cv6OOz1Wl6ruwTQBrIHyrUiHOnbuj7MvBtl+VvaMyFaIFuxTDXZ7YxuxR4+l2Nd3eCqD2VDD63OrMlBWkcdBSJXOttIecqc+plciKAGdd4B8NIE/aD2oYChXKU/HDOyj6AoxJSSCjhGOBsa7T0j0w4ecqBwXNx8T9rp6fLpZxVWMZsJ53wcg2DfkbZSU2ZPeqYoCijK604HOVPDU8CcS1Rskj0wXrllvQRfXk0gt5PaVdlPCfKfMMX1fZKeglXtkYxMb5heyvpZsgy3Kl5VPXhjAcCatdKNrA/mMUwL8Bv2toFaBENp1nqIg=='
-#  password: password
   mysql:
     host: 127.0.0.1
     port: 3306
@@ -16,4 +15,4 @@ authorization:
 management:
   server:
     base:
-      url: https://local.codzs.com:6003
+      url: https://local.codzs.com:${management.server.port}

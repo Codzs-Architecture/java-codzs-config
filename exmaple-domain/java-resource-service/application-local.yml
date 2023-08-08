@@ -5,10 +5,3 @@ management:
   server:
     base:
       url: https://local.codzs.com:${management.server.port}
-
-# oauth2:
-#   resource:
-#     server:
-#       jwt:
-#         issuer:
-#           uri: https://local.codzs.com:5003

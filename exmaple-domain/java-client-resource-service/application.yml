@@ -1,4 +1,9 @@
 spring:
+  data:
+    redis:
+      host: ${codzs.redis.host}
+      port: ${codzs.redis.port}
+
   security:
     oauth2:
       client:
@@ -6,7 +11,7 @@ spring:
           articles-client-oidc:
             provider: spring
             client-id: articles-client
-            client-secret: ${oauth2.client.article.secret}
+            client-secret: ${resource.server.secret}
             authorization-grant-type: authorization_code
             redirect-uri: "${my.url}/login/oauth2/code/{registrationId}"
             scope: openid
@@ -14,7 +19,7 @@ spring:
           articles-client-authorization-code:
             provider: spring
             client-id: articles-client
-            client-secret: ${oauth2.client.article.secret}
+            client-secret: ${resource.server.secret}
             authorization-grant-type: authorization_code
             redirect-uri: "${my.url}/authorized"
             scope: articles.read
@@ -22,11 +27,6 @@ spring:
         provider:
           spring:
             issuer-uri: ${authorization.server.url}
-
-  data:
-    redis:
-      host: ${codzs.redis.host}
-      port: ${codzs.redis.port}
 
 external:
   property: application.yml in java-client-resource-service
