@@ -4,7 +4,7 @@ spring:
       client:
         instance:
           management-base-url: ${management.server.base.url}
-          
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${authorization.mysql.host}:${authorization.mysql.port}/authorization
