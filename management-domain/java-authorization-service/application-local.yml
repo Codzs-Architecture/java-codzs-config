@@ -1,3 +1,6 @@
+my:
+  url: https://local.codzs.com:5001
+
 authorization:
   password: password
   mysql:
