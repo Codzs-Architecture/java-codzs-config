@@ -8,3 +8,8 @@ authorization:
   redis:
     host: localhost
     port: 6379
+
+management:
+  server:
+    base:
+      url: https://local.codzs.com:6003
