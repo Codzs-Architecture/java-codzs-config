@@ -31,8 +31,8 @@ spring:
 
   data:
     redis:
-      host: ${redis.server.host}
-      port: ${redis.server.port}
+      host: ${codzs.redis.host}
+      port: ${codzs.redis.port}
 
 external:
   property: application.yml in java-client-resource-service
