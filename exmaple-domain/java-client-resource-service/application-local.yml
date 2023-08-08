@@ -1,6 +1,12 @@
 my:
   url: https://local.codzs.com:8001
 
+
+management:
+  server:
+    base:
+      url: https://local.codzs.com:9001
+
 oauth2:
   client:
     article:

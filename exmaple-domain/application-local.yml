@@ -1,0 +1,3 @@
+resource:
+  server:
+    url: https://local.codzs.com:8002
