@@ -1,11 +1,11 @@
 my:
-  url: https://local.codzs.com:8001
+  url: https://local.codzs.com:${server.port}
 
 
 management:
   server:
     base:
-      url: https://local.codzs.com:9001
+      url: https://local.codzs.com:${management.server.port}
 
 oauth2:
   client:

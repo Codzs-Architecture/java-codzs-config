@@ -1,0 +1,6 @@
+spring:
+  boot:
+    admin:
+      client:
+        instance:
+          management-base-url: ${management.server.base.url}
