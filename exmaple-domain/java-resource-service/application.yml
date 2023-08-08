@@ -1,4 +1,10 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${oauth2.resource.server.jwt.issuer.uri}
+
   boot:
     admin:
       client:
