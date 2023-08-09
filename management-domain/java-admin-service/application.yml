@@ -34,3 +34,6 @@ spring:
 
 hibernate:
   show_sql: true
+
+platform:
+  type: AWS_EC2_INSTANCE

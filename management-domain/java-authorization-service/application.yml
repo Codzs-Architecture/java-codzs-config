@@ -25,5 +25,8 @@ acl:
     cache:
       key: com.codzs.acl.cache.local
 
+platform:
+  type: AWS_EC2_INSTANCE
+
 external:
   property: application-dev.yml inside java-demo-app
