@@ -5,5 +5,8 @@ spring:
         jwt:
           issuer-uri: ${authorization.server.url}
 
+platform:
+  type: AWS_EC2_INSTANCE
+
 external:
   property: application.yml in java-resource-service
