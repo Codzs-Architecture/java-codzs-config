@@ -9,6 +9,14 @@ spring:
               name: ${spring.security.user.name}
               password: ${spring.security.user.password}
 
+# Start: Exception handling
+  error:
+    whitelabel:
+      enabled: false
+    include-stacktrace: always
+    include-message: always
+# End: Exception handling
+
 management:
   endpoints:
     web:
