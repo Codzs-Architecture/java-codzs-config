@@ -2,26 +2,26 @@ spring:
   security:
     oauth2:
       client:
-        registration:
-          articles-client-oidc:
-            provider: spring
-            client-id: articles-client
-            client-secret: secret
-            authorization-grant-type: authorization_code
-            redirect-uri: "https://dev.localhost.com:8001/login/oauth2/code/{registrationId}"
-            scope: openid
-            client-name: articles-client-oidc
-          articles-client-authorization-code:
-            provider: spring
-            client-id: articles-client
-            client-secret: secret
-            authorization-grant-type: authorization_code
-            redirect-uri: "https://dev.localhost.com:8001/authorized"
-            scope: articles.read
-            client-name: articles-client-authorization-code
+        # registration:
+        #   articles-client-oidc:
+        #     provider: spring
+        #     client-id: articles-client
+        #     client-secret: secret
+        #     authorization-grant-type: authorization_code
+        #     redirect-uri: "https://local.codzs.com:8001/login/oauth2/code/{registrationId}"
+        #     scope: openid
+        #     client-name: articles-client-oidc
+        #   articles-client-authorization-code:
+        #     provider: spring
+        #     client-id: articles-client
+        #     client-secret: secret
+        #     authorization-grant-type: authorization_code
+        #     redirect-uri: "https://local.codzs.com:8001/authorized"
+        #     scope: articles.read
+        #     client-name: articles-client-authorization-code
         provider:
           spring:
-            issuer-uri: https://dev.localhost.com:5003
+            issuer-uri: https://local.codzs.com:5003
 
 external:
   property: application.yml in java-client-resource-service

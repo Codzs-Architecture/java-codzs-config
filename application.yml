@@ -2,7 +2,7 @@ spring:
   boot:
     admin:
       client:
-        url: https://dev.localhost.com:5001
+        url: https://local.codzs.com:5001
         username: admin-service-user
         password: '{cipher}AYCAdc8PaL5XHnmtxx602kzHwapj09i2tG7y6PzrL3qnDWcN12YnxgD2FLl/xkZrHUl+CgwyIANbjbughAb7W8Di3JJvEUbK+PIcpqANzqvbtT/ZFjQ3SkxH3x0Uyrw+ykH+eMaI/PMsuKJqvkBrZ6Fj8LilTlRRBPZZQg+ZX5hYa6WvJ07i/l6acZ1R6TeuaZfowXcy88tAODIMd1+k4pVbHjiXD5ET68Z/qk35Ej8cra2P6CLsfMeBGezQororAwAp2fM3u54nnYMDqPlC32vQPW9WpPh3vHM6jloy165FUMhBeuPm1jZeoXu8OIaafta5V0xNLnG1GFdUxgbThZMtlITExgUj08KE/GYKXndSQXt6qSvCZ7kfjJru3EpZBBlRFPkFV3wnscOHYA3tRil5UXANJ3HQ2bNmR6r3Z7V8OZzxFU3budRaWUbdSfZIKeismnWNtGZ9lMh0TG5HNqqugbTbxNeZJTskIhRyBKaOfYG2ovBqWVa1+l6gYQVHOErDFXr2mDY08uMQbaSNm5/tC9PnHN+xjZEtC3zJ5WL1fA=='
         instance:
@@ -65,8 +65,8 @@ springdoc:
 # Start: Enable SSL on localhost
 server:
   ssl:
-    key-store: ${server.ssl.keystore} #classpath:dev.localhost.com.p12
-    key-store-password: cerpassword
+    key-store: ${server.ssl.keystore}
+    key-store-password: ${server.ssl.password}
     key-store-type: pkcs12
-    key-password: cerpassword
+    key-password: ${server.ssl.password}
 # End: Enable SSL on localhost
