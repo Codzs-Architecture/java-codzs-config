@@ -2,6 +2,7 @@ spring:
   boot:
     admin:
       client:
+        url: https://local.codzs.com:5001
         username: admin-service-user
         instance:
           metadata:
@@ -61,3 +62,12 @@ springdoc:
   show-actuator: true
   use-management-port: true
 # End: OpenApi
+
+# Start: Enable SSL on localhost
+server:
+  ssl:
+    key-store: ${server.ssl.keystore}
+    key-store-password: ${server.ssl.password}
+    key-store-type: pkcs12
+    key-password: ${server.ssl.password}
+# End: Enable SSL on localhost
