@@ -11,7 +11,7 @@ spring:
           articles-client-oidc:
             provider: spring
             client-id: articles-client
-            client-secret: secret
+            client-secret: secret1
             authorization-grant-type: authorization_code
             redirect-uri: "https://local.codzs.com:8001/login/oauth2/code/{registrationId}"
             scope: openid
@@ -19,7 +19,7 @@ spring:
           articles-client-authorization-code:
             provider: spring
             client-id: articles-client
-            client-secret: secret
+            client-secret: secret1
             authorization-grant-type: authorization_code
             redirect-uri: "https://local.codzs.com:8001/authorized"
             scope: articles.read
