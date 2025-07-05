@@ -26,7 +26,11 @@ spring:
             client-name: articles-client-authorization-code
         provider:
           spring:
-            issuer-uri: https://local.codzs.com:5003
+            issuer-uri: ${authorization.server.url}
+
+resource:
+  server:
+    url: https://local.codzs.com:8002
 
 platform:
   type: AWS_EC2_INSTANCE
