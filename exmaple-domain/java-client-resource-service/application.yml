@@ -21,7 +21,7 @@ spring:
             client-id: articles-client
             client-secret: secret
             authorization-grant-type: authorization_code
-            redirect-uri: "https://local.codzs.com:8001/authorized"
+            redirect-uri: "https://local.codzs.com:8001/login/oauth2/code/articles-client-authorization-code"
             scope: articles.read
             client-name: articles-client-authorization-code
         provider:
