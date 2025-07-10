@@ -26,12 +26,12 @@ spring:
             client-name: messaging-client-authorization-code
         provider:
           spring:
-            issuer-uri: ${authorization.server.url}
-            # authorization-uri: ${authorization.server.url}/oauth2/authorize
-            # token-uri: ${authorization.server.url}/oauth2/token
-            # jwk-set-uri: ${authorization.server.url}/oauth2/jwks
-            # user-info-uri: ${authorization.server.url}/userinfo
-            # user-name-attribute: sub
+            # issuer-uri: ${authorization.server.url}
+            authorization-uri: ${authorization.server.url}/oauth2/authorize
+            token-uri: ${authorization.server.url}/oauth2/token
+            jwk-set-uri: ${authorization.server.url}/oauth2/jwks
+            user-info-uri: ${authorization.server.url}/userinfo
+            user-name-attribute: sub
 
   cloud:
     gateway:
