@@ -50,7 +50,7 @@ spring:
             predicates:
               - Path=/messages
             filters:
-              - RelayTokenIfExists=messaging-client-authorization-code
+              - TokenRelay=
 
 app:
   base-uri: http://127.0.0.1:4200
