@@ -16,21 +16,10 @@ spring:
             redirect-uri: "https://local.codzs.com:8004/login/oauth2/code/{registrationId}"
             scope: openid,profile
             client-name: messaging-client-oidc
-          messaging-client-authorization-code:
-            provider: spring
-            client-id: messaging-client
-            client-secret: secret
-            authorization-grant-type: authorization_code
-            redirect-uri: "https://local.codzs.com:8004/authorized"
-            scope: message.read,message.write
-            client-name: messaging-client-authorization-code
+            client-authentication-method: client_secret_basic
         provider:
           spring:
-            # issuer-uri: ${authorization.server.url}
-            authorization-uri: ${authorization.server.url}/oauth2/authorize
-            token-uri: ${authorization.server.url}/oauth2/token
-            jwk-set-uri: ${authorization.server.url}/oauth2/jwks
-            user-info-uri: ${authorization.server.url}/userinfo
+            issuer-uri: ${authorization.server.url}
             user-name-attribute: sub
 
   cloud:
