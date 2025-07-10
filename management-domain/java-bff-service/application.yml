@@ -1,0 +1,67 @@
+spring:
+  boot:
+    admin:
+      client:
+        instance:
+          management-base-url: ${management.server.base.url}
+  security:
+    oauth2:
+      client:
+        registration:
+          messaging-client-oidc:
+            client-id: messaging-client
+            client-secret: ${authorization.password}
+            client-name: messaging-client-oidc
+            provider: spring
+            scope: openid,profile
+            redirect-uri: "https://local.codzs.com:8004/login/oauth2/code/{registrationId}"
+            client-authentication-method: client_secret_basic
+            authorization-grant-type: authorization_code
+          messaging-client-authorization-code:
+            client-id: messaging-client
+            client-secret: ${authorization.password}
+            client-name: messaging-client-authorization-code
+            provider: spring
+            scope: message.read,message.write
+            redirect-uri: "https://local.codzs.com:8004/authorized"
+            client-authentication-method: client_secret_basic
+            authorization-grant-type: authorization_code
+        provider:
+          spring:
+            issuer-uri: https://local.codzs.com:5003
+            authorization-uri: https://local.codzs.com:5003/oauth2/authorize
+            token-uri: https://local.codzs.com:5003/oauth2/token
+            jwk-set-uri: https://local.codzs.com:5003/oauth2/jwks
+            user-info-uri: https://local.codzs.com:5003/userinfo
+            user-name-attribute: sub
+
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: userinfo
+            uri: https://local.codzs.com:5003
+            predicates:
+              - Path=/userinfo
+            filters:
+              - TokenRelay=
+          - id: messages
+            uri: https://local.codzs.com:8002
+            predicates:
+              - Path=/messages
+            filters:
+              - RelayTokenIfExists=messaging-client-authorization-code
+
+app:
+  base-uri: http://127.0.0.1:4200
+
+management:
+  server:
+    base:
+      url: https://local.codzs.com:${management.server.port}
+
+platform:
+  type: AWS_EC2_INSTANCE
+
+external:
+  property: application.yml in java-bff-service

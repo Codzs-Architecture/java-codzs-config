@@ -1,6 +1,14 @@
 my:
   url: https://local.codzs.com:${server.port}
 
+authorization:
+  server:
+    url: https://local.codzs.com:5003
+
+resource:
+  server:
+    secret: localpassword
+
 management:
   server:
     base:
