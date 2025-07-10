@@ -9,38 +9,36 @@ spring:
       client:
         registration:
           messaging-client-oidc:
-            client-id: messaging-client
-            client-secret: ${authorization.password}
-            client-name: messaging-client-oidc
             provider: spring
-            scope: openid,profile
+            client-id: messaging-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
             redirect-uri: "https://local.codzs.com:8004/login/oauth2/code/{registrationId}"
-            client-authentication-method: client_secret_basic
-            authorization-grant-type: authorization_code
+            scope: openid,profile
+            client-name: messaging-client-oidc
           messaging-client-authorization-code:
-            client-id: messaging-client
-            client-secret: ${authorization.password}
-            client-name: messaging-client-authorization-code
             provider: spring
-            scope: message.read,message.write
-            redirect-uri: "https://local.codzs.com:8004/authorized"
-            client-authentication-method: client_secret_basic
+            client-id: messaging-client
+            client-secret: secret
             authorization-grant-type: authorization_code
+            redirect-uri: "https://local.codzs.com:8004/authorized"
+            scope: message.read,message.write
+            client-name: messaging-client-authorization-code
         provider:
           spring:
-            issuer-uri: https://local.codzs.com:5003
-            authorization-uri: https://local.codzs.com:5003/oauth2/authorize
-            token-uri: https://local.codzs.com:5003/oauth2/token
-            jwk-set-uri: https://local.codzs.com:5003/oauth2/jwks
-            user-info-uri: https://local.codzs.com:5003/userinfo
-            user-name-attribute: sub
+            issuer-uri: ${authorization.server.url}
+            # authorization-uri: ${authorization.server.url}/oauth2/authorize
+            # token-uri: ${authorization.server.url}/oauth2/token
+            # jwk-set-uri: ${authorization.server.url}/oauth2/jwks
+            # user-info-uri: ${authorization.server.url}/userinfo
+            # user-name-attribute: sub
 
   cloud:
     gateway:
       mvc:
         routes:
           - id: userinfo
-            uri: https://local.codzs.com:5003
+            uri: ${authorization.server.url}
             predicates:
               - Path=/userinfo
             filters:
@@ -50,7 +48,7 @@ spring:
             predicates:
               - Path=/messages
             filters:
-              - TokenRelay=
+              - RelayTokenIfExists=messaging-client-authorization-code
 
 app:
   base-uri: http://127.0.0.1:4200
