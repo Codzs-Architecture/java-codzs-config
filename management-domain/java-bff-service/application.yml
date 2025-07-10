@@ -63,3 +63,15 @@ platform:
 
 external:
   property: application.yml in java-bff-service
+
+
+# Enable detailed OAuth2 debugging
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.security.web: DEBUG
+    org.springframework.web.client: DEBUG
+    org.springframework.boot.web.client: DEBUG
+    org.springframework.security.oauth2.client: TRACE
+    org.springframework.security.oauth2.client.endpoint: TRACE
