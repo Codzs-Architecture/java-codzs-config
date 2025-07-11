@@ -35,7 +35,7 @@ server:
   servlet:
     session:
       cookie:
-        name: JSESSIONID
+        name: AUTHSESSIONID
         domain: local.codzs.com
         path: /
         secure: true
