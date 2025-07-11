@@ -30,3 +30,15 @@ platform:
 
 external:
   property: application-dev.yml inside java-demo-app
+
+server:
+  servlet:
+    session:
+      cookie:
+        name: AUTHSESSIONID
+        domain: local.codzs.com
+        path: /
+        secure: true
+        http-only: true
+        same-site: lax
+      timeout: 30m
