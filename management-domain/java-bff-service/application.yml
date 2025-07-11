@@ -4,42 +4,6 @@ spring:
       client:
         instance:
           management-base-url: ${management.server.base.url}
-  security:
-    oauth2:
-      client:
-        registration:
-          messaging-client-oidc:
-            provider: spring
-            client-id: messaging-client
-            client-secret: secret
-            authorization-grant-type: authorization_code
-            redirect-uri: "https://local.codzs.com:8004/login/oauth2/code/{registrationId}"
-            scope: openid,profile
-            client-name: messaging-client-oidc
-            client-authentication-method: client_secret_basic
-        provider:
-          spring:
-            issuer-uri: https://local.codzs.com:5003
-            user-name-attribute: sub
-
-  cloud:
-    gateway:
-      mvc:
-        routes:
-          - id: userinfo
-            uri: ${authorization.server.url}
-            predicates:
-              - Path=/userinfo
-            filters:
-              - TokenRelay=
-          - id: messages
-            uri: https://local.codzs.com:8002
-            predicates:
-              - Path=/messages
-            filters:
-              - RelayTokenIfExists=messaging-client-authorization-code
-    function:
-      definition: ""
 
 app:
   base-uri: http://127.0.0.1:4200
