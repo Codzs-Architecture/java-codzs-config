@@ -19,7 +19,7 @@ spring:
             client-authentication-method: client_secret_basic
         provider:
           spring:
-            issuer-uri: ${authorization.server.url}
+            issuer-uri: https://local.codzs.com:5003
             user-name-attribute: sub
 
   cloud:
