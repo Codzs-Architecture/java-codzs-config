@@ -36,9 +36,8 @@ server:
     session:
       cookie:
         name: AUTHSESSIONID
-        domain: local.codzs.com
         path: /
         secure: true
         http-only: true
-        same-site: lax
+        same-site: none
       timeout: 30m
