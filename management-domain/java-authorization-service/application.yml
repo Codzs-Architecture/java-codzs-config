@@ -9,16 +9,16 @@ spring:
               name: authorization-service-user
               password: ${authorization.password}
 
-management:
-  server:
-    base:
-      url: https://local.codzs.com:${management.server.port}
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${authorization.mysql.host}:${authorization.mysql.port}/authorization
     username: ${authorization.mysql.username}
     password: ${authorization.mysql.password}
+
+management:
+  server:
+    base:
+      url: https://local.codzs.com:${management.server.port}
   jpa:
     generate-ddl: false
   data:
