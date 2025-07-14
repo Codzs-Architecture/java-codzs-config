@@ -11,6 +11,11 @@ spring:
 
 app:
   base-uri: http://127.0.0.1:4200
+  # Security: Define allowed redirect hosts to prevent open redirect attacks
+  allowed-redirect-hosts:
+    - 127.0.0.1
+    - localhost
+    - local.codzs.com
 
 management:
   server:
