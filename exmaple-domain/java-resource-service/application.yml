@@ -1,4 +1,13 @@
 spring:
+  boot:
+    admin:
+      client:
+        instance:
+          management-base-url: ${management.server.base.url}
+          metadata:
+            user:
+              name: resource-service-user
+              password: ${resource.server.secret}
   security:
     oauth2:
       resourceserver:

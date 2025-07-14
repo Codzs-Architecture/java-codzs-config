@@ -4,6 +4,10 @@ spring:
       client:
         instance:
           management-base-url: ${management.server.base.url}
+          metadata:
+            user:
+              name: ${spring.security.user.name}
+              password: ${spring.security.user.password}
 
 app:
   base-uri: http://127.0.0.1:4200

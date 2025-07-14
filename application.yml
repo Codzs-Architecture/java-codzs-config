@@ -11,11 +11,6 @@ spring:
         url: https://local.codzs.com:5001
         username: admin-service-user
         password: ${admin.password}
-        instance:
-          metadata:
-            user:
-              name: ${spring.security.user.name}
-              password: ${spring.security.user.password}
 
 # Start: Exception handling
   error:
