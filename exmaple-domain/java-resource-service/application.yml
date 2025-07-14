@@ -8,6 +8,12 @@ spring:
             user:
               name: resource-service-user
               password: ${resource.server.secret}
+
+management:
+  server:
+    base:
+      url: https://local.codzs.com:${management.server.port}
+
   security:
     oauth2:
       resourceserver:
