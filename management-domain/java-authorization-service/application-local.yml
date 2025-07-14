@@ -23,3 +23,6 @@ management:
   server:
     base:
       url: https://local.codzs.com:${management.server.port}
+
+hibernate:
+  show_sql: true

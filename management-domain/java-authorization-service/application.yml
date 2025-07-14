@@ -33,7 +33,7 @@ management:
       port: ${authorization.redis.port}
 
 hibernate:
-  show_sql: true
+  show_sql: false  # Security: Prevent SQL statement logging in production
 
 acl:
   redis:

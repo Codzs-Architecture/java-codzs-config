@@ -24,13 +24,13 @@ external:
   property: application.yml in java-bff-service
 
 
-# Enable detailed OAuth2 debugging
+# Production-safe logging configuration
 logging:
   level:
-    org.springframework.security: DEBUG
-    org.springframework.security.oauth2: DEBUG
-    org.springframework.security.web: DEBUG
-    org.springframework.web.client: DEBUG
-    org.springframework.boot.web.client: DEBUG
-    org.springframework.security.oauth2.client: TRACE
-    org.springframework.security.oauth2.client.endpoint: TRACE
+    org.springframework.security: WARN  # Security: Prevent token exposure
+    org.springframework.security.oauth2: WARN  # Security: Prevent OAuth2 token logging
+    org.springframework.security.web: WARN  # Security: Prevent sensitive web details
+    org.springframework.web.client: WARN  # Security: Prevent request/response logging
+    org.springframework.boot.web.client: WARN  # Security: Prevent client details logging
+    org.springframework.security.oauth2.client: WARN  # Security: Prevent client secret exposure
+    org.springframework.security.oauth2.client.endpoint: WARN  # Security: Prevent endpoint details
