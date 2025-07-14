@@ -1,9 +1,16 @@
 spring:
+  # Security configuration for management endpoints
+  security:
+    user:
+      password: ${MANAGEMENT_PASSWORD:management-password}
+      name: ${MANAGEMENT_USER:management-user}
+      roles: ACTUATOR
   boot:
     admin:
       client:
         url: https://local.codzs.com:5001
         username: admin-service-user
+        password: ${admin.password}
         instance:
           metadata:
             user:
@@ -23,7 +30,8 @@ management:
     web:
       base-path: /management
       exposure:
-        include: "*"
+        include: "health,info,metrics,loggers,configprops"  # Only expose safe endpoints for admin server
+        exclude: "env,heapdump,threaddump,shutdown,beans"  # Exclude dangerous endpoints
     loggers:
       enabled: true
     health:
