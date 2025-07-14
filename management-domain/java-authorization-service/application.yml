@@ -6,8 +6,8 @@ spring:
           management-base-url: ${management.server.base.url}
           metadata:
             user:
-              name: authorization-service-user
-              password: ${authorization.password}
+              name: ${spring.security.user.name}
+              password: ${spring.security.user.password}
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
