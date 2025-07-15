@@ -4,29 +4,29 @@ spring:
       host: ${codzs.redis.host}
       port: ${codzs.redis.port}
 
-  security:
-    oauth2:
-      client:
-        registration:
-          articles-client-oidc:
-            provider: spring
-            client-id: articles-client
-            client-secret: ${oauth2.articles.client.secret}
-            authorization-grant-type: authorization_code
-            redirect-uri: "https://local.codzs.com:8001/login/oauth2/code/{registrationId}"
-            scope: openid
-            client-name: articles-client-oidc
-          articles-client-authorization-code:
-            provider: spring
-            client-id: articles-client
-            client-secret: ${oauth2.articles.client.secret}
-            authorization-grant-type: authorization_code
-            redirect-uri: "https://local.codzs.com:8001/authorized"
-            scope: articles.read
-            client-name: articles-client-authorization-code
-        provider:
-          spring:
-            issuer-uri: ${authorization.server.url}
+  # security:
+  #   oauth2:
+  #     client:
+  #       registration:
+  #         articles-client-oidc:
+  #           provider: spring
+  #           client-id: articles-client
+  #           client-secret: ${oauth2.articles.client.secret}
+  #           authorization-grant-type: authorization_code
+  #           redirect-uri: "https://local.codzs.com:8001/login/oauth2/code/{registrationId}"
+  #           scope: openid
+  #           client-name: articles-client-oidc
+  #         articles-client-authorization-code:
+  #           provider: spring
+  #           client-id: articles-client
+  #           client-secret: ${oauth2.articles.client.secret}
+  #           authorization-grant-type: authorization_code
+  #           redirect-uri: "https://local.codzs.com:8001/authorized"
+  #           scope: articles.read
+  #           client-name: articles-client-authorization-code
+  #       provider:
+  #         spring:
+  #           issuer-uri: ${authorization.server.url}
 
 resource:
   server:
