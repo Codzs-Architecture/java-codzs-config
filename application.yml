@@ -2,8 +2,8 @@ spring:
   # Security configuration for management endpoints
   security:
     user:
-      password: ${MANAGEMENT_PASSWORD:management-password}
-      name: ${MANAGEMENT_USER:management-user}
+      password: ${MANAGEMENT_PASSWORD:password}
+      name: ${MANAGEMENT_USER:user1}
       roles: ACTUATOR
   boot:
     admin:
