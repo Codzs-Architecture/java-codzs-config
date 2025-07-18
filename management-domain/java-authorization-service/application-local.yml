@@ -14,10 +14,20 @@ authorization:
     host: 127.0.0.1
     port: 3306
     username: root
-    password: '{cipher}AYBZTs8B9RuGMhgG00sG+OL7z9EYZh7OHBW90yyr91ve7d50s2+a1lgfCqK+gY4+zsiyOD/WFRAIusIh+e5GFqzBwVVz2k/s702es1HUj4+Ssr/35nOxfcI3FNcWLTCgEuiH6GClUGVZxi5ZP7NUYlPIfOx7n2XQ2dELk0WQ9F3GxAWhhGNLWpAS6BYoS1g5Kn2QDJ+fcRsmIaJkFoV1z4TYw8e/1KP05n+pUpuE017LBM7CW8N6GeUbCWzBp/9OXFWcqlMkHWTLwZhbjg1DZeG5Ro8bF58nBGkaSIpPN2R72JbIBPoG023qw/pl6S9U4kqmAdBBbDZHXnGJwGzJjV9r57udo7l3Cmppe2k1pVljaXPLEs74vl8M7bSG64MLrJ1N5YBf0Z2o7sveFNsuCYXAGuIld5uCZ5+T9Vnce0MGgORrJ6RbqgLo5dnWy43zZmkBvACJ50Vkm/CFNRtz/CG/VFg3xNC/ZVwO0dNCzbH2fPHq0EX+vwzPcVlU0r3r30VW77+tV+uQLY0GncDTrYcRki68rL0y3rmh7S55crdDhQ=='
+    password: '{cipher}AYBZTs8B9RuGMhgG00sG+OL7z9EYZh7OHBW90yyr91ve7d50s2+a1lgfCqK+gY4+zsiyOD/WFRAIusIh+e5GFqzBwVVz2k/s702es1HUj4+Ssr/35nOxfcI3FNcWLTCgEuiH6GClUGVZxi5ZP7NUYlPIfOx7n2XQ2dELk0WQ9F3GxAWhhGNLWpAS6BYoS1g5Kn2QDJ+fcRsmIaJkFoV1z4TYw8e/1KP05n+pUpuE017LBM7CW8N6GeUbCWzBp/9OXFWcqlMkHWTLwZhbjg1DZeG5Ssr/35nOxfcI3FNcWLTCgEuiH6GClUGVZxi5ZP7NUYlPIfOx7n2XQ2dELk0WQ9F3GxAWhhGNLWpAS6BYoS1g5Kn2QDJ+fcRsmIaJkFoV1z4TYw8e/1KP05n+pUpuE017LBM7CW8N6GeUbCWzBp/9OXFWcqlMkHWTLwZhbjg1DZeG5Ro8bF58nBGkaSIpPN2R72JbIBPoG023qw/pl6S9U4kqmAdBBbDZHXnGJwGzJjV9r57udo7l3Cmppe2k1pVljaXPLEs74vl8M7bSG64MLrJ1N5YBf0Z2o7sveFNsuCYXAGuIld5uCZ5+T9Vnce0MGgORrJ6RbqgLo5dnWy43zZmkBvACJ50Vkm/CFNRtz/CG/VFg3xNC/ZVwO0dNCzbH2fPHq0EX+vwzPcVlU0r3r30VW77+tV+uQLY0GncDTrYcRki68rL0y3rmh7S55crdDhQ=='
   redis:
     host: localhost
     port: 6379
+
+# Spring Configuration
+spring:
+  session:
+    store-type: redis
+    redis:
+      namespace: "authorization-service:sessions"
+      flush-mode: on_save
+      save-mode: on_set_attribute
+    timeout: 30m
 
 management:
   server:

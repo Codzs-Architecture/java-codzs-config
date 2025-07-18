@@ -21,6 +21,14 @@ spring:
     username: ${authorization.mysql.username}
     password: ${authorization.mysql.password}
 
+  session:
+    store-type: redis
+    redis:
+      namespace: "authorization-service:sessions"
+      flush-mode: on_save
+      save-mode: on_set_attribute
+    timeout: 30m
+
 management:
   server:
     base:
