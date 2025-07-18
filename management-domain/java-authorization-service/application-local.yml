@@ -26,3 +26,13 @@ management:
 
 hibernate:
   show_sql: true
+
+# Device Authorization Security Configuration
+device:
+  security:
+    rate-limiting:
+      enabled: true
+      requests-per-minute: 10
+      time-window-minutes: 1
+      # Note: Rate limiting protects against device code enumeration attacks
+      # Set to false only in development environments for testing
