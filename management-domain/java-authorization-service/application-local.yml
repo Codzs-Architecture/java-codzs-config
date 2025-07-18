@@ -36,3 +36,23 @@ device:
       time-window-minutes: 1
       # Note: Rate limiting protects against device code enumeration attacks
       # Set to false only in development environments for testing
+    ip-blacklist:
+      enabled: true
+      block-response-delay-ms: 1000
+      # Note: IP blacklisting prevents access from known malicious IPs
+      # Set enabled to false to disable IP blacklist checking
+
+# Resilience4j Configuration for Rate Limiting (Local Environment)
+resilience4j:
+  ratelimiter:
+    instances:
+      device-authorization:
+        limit-for-period: 10
+        limit-refresh-period: 60s
+        timeout-duration: 100ms
+        register-health-indicator: true
+        event-consumer-buffer-size: 100
+    metrics:
+      enabled: true
+      distribution-statistic-expiry: 1m
+      distribution-statistic-buffer-size: 100
