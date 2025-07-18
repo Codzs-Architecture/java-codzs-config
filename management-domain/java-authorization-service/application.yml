@@ -74,6 +74,13 @@ security:
     block-response-delay-ms: 2000
     # Note: IP blacklisting prevents access from known malicious IPs
     # Longer delay in production for better security
+  ip-whitelist:
+    enabled: false
+    block-response-delay-ms: 2000
+    enforce-mode: true
+    # Note: IP whitelisting restricts API access to approved IPs only
+    # Set enabled to true to activate whitelist validation in production
+    # enforce-mode: true blocks on validation errors for maximum security
 
 # Resilience4j Configuration for Rate Limiting (Production Environment)
 resilience4j:

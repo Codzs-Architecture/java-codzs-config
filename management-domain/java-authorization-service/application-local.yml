@@ -44,6 +44,13 @@ security:
     block-response-delay-ms: 1000
     # Note: IP blacklisting prevents access from known malicious IPs
     # Set enabled to false to disable IP blacklist checking
+  ip-whitelist:
+    enabled: false
+    block-response-delay-ms: 1000
+    enforce-mode: false
+    # Note: IP whitelisting restricts API access to approved IPs only
+    # Set enabled to true to activate whitelist validation
+    # enforce-mode: true blocks on validation errors, false allows on errors
 
 # Resilience4j Configuration for Rate Limiting (Local Environment)
 resilience4j:
