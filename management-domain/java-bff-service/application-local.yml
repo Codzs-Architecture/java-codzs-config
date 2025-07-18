@@ -6,7 +6,7 @@ service:
   endpoints:
     authServerLogoutUrl: https://local.codzs.com:5003/logout
     authServerUserinfoUrl: https://local.codzs.com:5003/userinfo
-    messagesUrl: https://local.codzs.com:7002/messages
+    messagesUrl: https://local.codzs.com:8002/messages
 
 management:
   server:
