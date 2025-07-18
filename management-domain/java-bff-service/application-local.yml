@@ -2,6 +2,12 @@ authorization:
   server:
     url: https://local.codzs.com:5003
 
+service:
+  endpoints:
+    authServerLogoutUrl: https://local.codzs.com:5003/logout
+    authServerUserinfoUrl: https://local.codzs.com:5003/userinfo
+    messagesUrl: https://local.codzs.com:7002/messages
+
 management:
   server:
     base:
