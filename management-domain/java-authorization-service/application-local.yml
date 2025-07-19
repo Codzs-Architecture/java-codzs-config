@@ -55,7 +55,7 @@ security:
     # Note: IP blacklisting prevents access from known malicious IPs
     # Set enabled to false to disable IP blacklist checking
   ip-whitelist:
-    enabled: false
+    enabled: true
     block-response-delay-ms: 1000
     enforce-mode: false
     # Note: IP whitelisting restricts API access to approved IPs only
