@@ -87,6 +87,7 @@ app:
         - "https://production.codzs.com:4200"
         - "https://production.codzs.com:8001"
         - "https://production.codzs.com:8004"
+        - "https://production.codzs.com:5002"  # Config server
         # No localhost/127.0.0.1 in production
       allowed-headers:
         - "Content-Type"
@@ -99,7 +100,7 @@ app:
       allow-credentials: true
       max-age-seconds: 3600  # 1 hour cache in production
   cors:
-    allowed-origins: "https://production.codzs.com:4200"
+    allowed-origins: "https://production.codzs.com:4200,https://production.codzs.com:5002"
     allow-credentials: true
 
 # OAuth2 Client Configuration (Production Environment)  

@@ -18,7 +18,7 @@ authorization:
   redis:
     host: localhost
     port: 6379
-
+ 
 # Spring Configuration
 spring:
   session:
@@ -83,6 +83,7 @@ app:
         - "https://local.codzs.com:4200"
         - "https://local.codzs.com:8001"
         - "https://local.codzs.com:8004"
+        - "https://local.codzs.com:5002"  # Config server
         - "http://localhost:4200"      # Allow localhost for dev
         - "http://127.0.0.1:4200"      # Allow IP for dev
       allowed-headers:
@@ -97,7 +98,7 @@ app:
       allow-credentials: true
       max-age-seconds: 1800  # 30 minutes
   cors:
-    allowed-origins: "http://localhost:4200,http://127.0.0.1:4200,https://local.codzs.com:4200"
+    allowed-origins: "http://localhost:4200,http://127.0.0.1:4200,https://local.codzs.com:4200,https://local.codzs.com:5002"
     allow-credentials: true
 
 # OAuth2 Client Configuration (Local Environment)
