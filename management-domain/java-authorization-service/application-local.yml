@@ -62,6 +62,68 @@ security:
     # Set enabled to true to activate whitelist validation
     # enforce-mode: true blocks on validation errors, false allows on errors
 
+# Security Headers Configuration (Local Environment)
+app:
+  security:
+    hsts:
+      max-age-seconds: 31536000  # 1 year
+      include-sub-domains: true
+    csp:
+      # More permissive CSP for local development
+      default-src: "'self'"
+      script-src: "'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net"
+      style-src: "'self' 'unsafe-inline' https://cdn.jsdelivr.net"
+      img-src: "'self' data: https:"
+      font-src: "'self' https://cdn.jsdelivr.net"
+      form-action: "'self'"
+      base-uri: "'self'"
+      connect-src: "'self' https://local.codzs.com:*"
+    device-cors:
+      allowed-origins:
+        - "https://local.codzs.com:4200"
+        - "https://local.codzs.com:8001"
+        - "https://local.codzs.com:8004"
+        - "http://localhost:4200"      # Allow localhost for dev
+        - "http://127.0.0.1:4200"      # Allow IP for dev
+      allowed-headers:
+        - "Content-Type"
+        - "Authorization"
+        - "X-Requested-With"
+        - "X-XSRF-TOKEN"               # Additional header for dev
+      allowed-methods:
+        - "GET"
+        - "POST"
+        - "OPTIONS"
+      allow-credentials: true
+      max-age-seconds: 1800  # 30 minutes
+  cors:
+    allowed-origins: "http://localhost:4200,http://127.0.0.1:4200,https://local.codzs.com:4200"
+    allow-credentials: true
+
+# OAuth2 Client Configuration (Local Environment)
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google-idp:
+            provider: google
+            client-id: ${google.client_id}
+            client-secret: ${google.client_secret}
+            scope: openid, https://www.googleapis.com/auth/userinfo.profile, https://www.googleapis.com/auth/userinfo.email
+            client-name: Sign in with Google
+          github-idp:
+            provider: github
+            client-id: ${github.client_id}
+            client-secret: ${github.client_secret}
+            scope: user:email, read:user
+            client-name: Sign in with GitHub
+        provider:
+          google:
+            user-name-attribute: email
+          github:
+            user-name-attribute: login
+
 # Resilience4j Configuration for Rate Limiting (Local Environment)
 resilience4j:
   ratelimiter:

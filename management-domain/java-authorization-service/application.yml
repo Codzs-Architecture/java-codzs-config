@@ -65,6 +65,67 @@ server:
         same-site: none
       timeout: 30m
 
+# Security Headers Configuration (Production Environment)
+app:
+  security:
+    hsts:
+      max-age-seconds: 63072000  # 2 years in production
+      include-sub-domains: true
+    csp:
+      # Stricter CSP for production environment
+      default-src: "'self'"
+      script-src: "'self' https://cdn.jsdelivr.net"
+      style-src: "'self' https://cdn.jsdelivr.net"
+      img-src: "'self' data:"
+      font-src: "'self' https://cdn.jsdelivr.net"
+      form-action: "'self'"
+      base-uri: "'self'"
+      connect-src: "'self'"
+      # No unsafe-inline or unsafe-eval in production
+    device-cors:
+      allowed-origins:
+        - "https://production.codzs.com:4200"
+        - "https://production.codzs.com:8001"
+        - "https://production.codzs.com:8004"
+        # No localhost/127.0.0.1 in production
+      allowed-headers:
+        - "Content-Type"
+        - "Authorization"
+        - "X-Requested-With"
+      allowed-methods:
+        - "GET"
+        - "POST"
+        - "OPTIONS"
+      allow-credentials: true
+      max-age-seconds: 3600  # 1 hour cache in production
+  cors:
+    allowed-origins: "https://production.codzs.com:4200"
+    allow-credentials: true
+
+# OAuth2 Client Configuration (Production Environment)  
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google-idp:
+            provider: google
+            client-id: ${google.client_id.prod}
+            client-secret: ${google.client_secret.prod}
+            scope: openid, https://www.googleapis.com/auth/userinfo.profile, https://www.googleapis.com/auth/userinfo.email
+            client-name: Sign in with Google
+          github-idp:
+            provider: github
+            client-id: ${github.client_id.prod}
+            client-secret: ${github.client_secret.prod}
+            scope: user:email, read:user
+            client-name: Sign in with GitHub
+        provider:
+          google:
+            user-name-attribute: email
+          github:
+            user-name-attribute: login
+
 # Device Authorization Security Configuration
 device:
   security:
