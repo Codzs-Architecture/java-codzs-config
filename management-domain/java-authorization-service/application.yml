@@ -1,10 +1,4 @@
 spring:
-  # security:
-  #   user:
-  #     password: authorization-service-user
-  #     name: '{cipher}AYAfdzcrkjwM4rt2jhkxezO5zBNmfljIeeBFXKsUMV8Q9ASYjBCv2lBtu2L7Se7hEK7DTDc1JxTmkiZW6dn14UhEdbpcSObqknAxiaK7wMBz3e6POdTZeIF1J/kCwBSvccEUGZuog1eZjQav14uE5wYQqyDfqnOPvak4JndzykJBjZ4SSzZNwOUYxQyRaA0gQbgYF+E+ZnY7BpwzfcT2DTpaZDPAYUBLFiCiY6bNbLBC3LS3i/Qq0/cv6OOz1Wl6ruwTQBrIHyrUiHOnbuj7MvBtl+VvaMyFaIFuxTDXZ7YxuxR4+l2Nd3eCqD2VDD63OrMlBWkcdBSJXOttIecqc+plciKAGdd4B8NIE/aD2oYChXKU/HDOyj6AoxJSSCjhGOBsa7T0j0w4ecqBwXNx8T9rp6fLpZxVWMZsJ53wcg2DfkbZSU2ZPeqYoCijK604HOVPDU8CcS1Rskj0wXrllvQRfXk0gt5PaVdlPCfKfMMX1fZKeglXtkYxMb5heyvpZsgy3Kl5VPXhjAcCatdKNrA/mMUwL8Bv2toFaBENp1nqIg=='
-  #     roles: ACTUATOR
-
   boot:
     admin:
       client:
@@ -63,7 +57,7 @@ management:
       port: ${authorization.redis.port}
 
 hibernate:
-  show_sql: false  # Security: Prevent SQL statement logging in production
+  show_sql: false
 
 acl:
   redis:
@@ -73,8 +67,6 @@ acl:
 platform:
   type: AWS_EC2_INSTANCE
 
-external:
-  property: application-dev.yml inside java-demo-app
 
 server:
   servlet:
@@ -87,14 +79,12 @@ server:
         same-site: none
       timeout: 30m
 
-# Security Headers Configuration (Production Environment)
 app:
   security:
     hsts:
-      max-age-seconds: 63072000  # 2 years in production
+      max-age-seconds: 63072000
       include-sub-domains: true
     csp:
-      # Stricter CSP for production environment
       default-src: "'self'"
       script-src: "'self' https://cdn.jsdelivr.net"
       style-src: "'self' https://cdn.jsdelivr.net"
@@ -103,14 +93,12 @@ app:
       form-action: "'self'"
       base-uri: "'self'"
       connect-src: "'self'"
-      # No unsafe-inline or unsafe-eval in production
     device-cors:
       allowed-origins:
         - "https://production.codzs.com:4200"
         - "https://production.codzs.com:8001"
         - "https://production.codzs.com:8004"
-        - "https://production.codzs.com:5002"  # Config server
-        # No localhost/127.0.0.1 in production
+        - "https://production.codzs.com:5002"
       allowed-headers:
         - "Content-Type"
         - "Authorization"
@@ -120,38 +108,28 @@ app:
         - "POST"
         - "OPTIONS"
       allow-credentials: true
-      max-age-seconds: 3600  # 1 hour cache in production
+      max-age-seconds: 3600
   cors:
     allowed-origins: "https://production.codzs.com:4200,https://production.codzs.com:5002"
     allow-credentials: true
 
 
-# Device Authorization Security Configuration
 device:
   security:
     rate-limiting:
       enabled: true
       requests-per-minute: 5
       time-window-minutes: 1
-      # Note: Rate limiting protects against device code enumeration attacks
-      # More restrictive in production than local environment
 
-# Global Security Configuration
 security:
   ip-blacklist:
     enabled: true
     block-response-delay-ms: 2000
-    # Note: IP blacklisting prevents access from known malicious IPs
-    # Longer delay in production for better security
   ip-whitelist:
     enabled: true
     block-response-delay-ms: 2000
     enforce-mode: true
-    # Note: IP whitelisting restricts API access to approved IPs only
-    # Set enabled to true to activate whitelist validation in production
-    # enforce-mode: true blocks on validation errors for maximum security
 
-# Resilience4j Configuration for Rate Limiting (Production Environment)
 resilience4j:
   ratelimiter:
     instances:
@@ -161,7 +139,6 @@ resilience4j:
         timeout-duration: 200ms
         register-health-indicator: true
         event-consumer-buffer-size: 50
-        # Note: More restrictive rate limiting in production
     metrics:
       enabled: true
       distribution-statistic-expiry: 2m

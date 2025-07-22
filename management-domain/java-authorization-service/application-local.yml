@@ -1,15 +1,4 @@
-# spring:
-#   security:
-#     user:
-#       password: authorization-service-user
-#       name: '{cipher}AYAfdzcrkjwM4rt2jhkxezO5zBNmfljIeeBFXKsUMV8Q9ASYjBCv2lBtu2L7Se7hEK7DTDc1JxTmkiZW6dn14UhEdbpcSObqknAxiaK7wMBz3e6POdTZeIF1J/kCwBSvccEUGZuog1eZjQav14uE5wYQqyDfqnOPvak4JndzykJBjZ4SSzZNwOUYxQyRaA0gQbgYF+E+ZnY7BpwzfcT2DTpaZDPAYUBLFiCiY6bNbLBC3LS3i/Qq0/cv6OOz1Wl6ruwTQBrIHyrUiHOnbuj7MvBtl+VvaMyFaIFuxTDXZ7YxuxR4+l2Nd3eCqD2VDD63OrMlBWkcdBSJXOttIecqc+plciKAGdd4B8NIE/aD2oYChXKU/HDOyj6AoxJSSCjhGOBsa7T0j0w4ecqBwXNx8T9rp6fLpZxVWMZsJ53wcg2DfkbZSU2ZPeqYoCijK604HOVPDU8CcS1Rskj0wXrllvQRfXk0gt5PaVdlPCfKfMMX1fZKeglXtkYxMb5heyvpZsgy3Kl5VPXhjAcCatdKNrA/mMUwL8Bv2toFaBENp1nqIg=='
-#       roles: ACTUATOR
-
-# my:
-#   url: https://local.codzs.com:5001
-
 authorization:
-  # password: '{cipher}AYAfdzcrkjwM4rt2jhkxezO5zBNmfljIeeBFXKsUMV8Q9ASYjBCv2lBtu2L7Se7hEK7DTDc1JxTmkiZW6dn14UhEdbpcSObqknAxiaK7wMBz3e6POdTZeIF1J/kCwBSvccEUGZuog1eZjQav14uE5wYQqyDfqnOPvak4JndzykJBjZ4SSzZNwOUYxQyRaA0gQbgYF+E+ZnY7BpwzfcT2DTpaZDPAYUBLFiCiY6bNbLBC3LS3i/Qq0/cv6OOz1Wl6ruwTQBrIHyrUiHOnbuj7MvBtl+VvaMyFaIFuxTDXZ7YxuxR4+l2Nd3eCqD2VDD63OrMlBWkcdBSJXOttIecqc+plciKAGdd4B8NIE/aD2oYChXKU/HDOyj6AoxJSSCjhGOBsa7T0j0w4ecqBwXNx8T9rp6fLpZxVWMZsJ53wcg2DfkbZSU2ZPeqYoCijK604HOVPDU8CcS1Rskj0wXrllvQRfXk0gt5PaVdlPCfKfMMX1fZKeglXtkYxMb5heyvpZsgy3Kl5VPXhjAcCatdKNrA/mMUwL8Bv2toFaBENp1nqIg=='
   mysql:
     host: 127.0.0.1
     port: 3306
@@ -18,8 +7,7 @@ authorization:
   redis:
     host: localhost
     port: 6379
- 
-# Spring Configuration
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -63,39 +51,28 @@ management:
 hibernate:
   show_sql: true
 
-# Device Authorization Security Configuration
 device:
   security:
     rate-limiting:
       enabled: true
       requests-per-minute: 10
       time-window-minutes: 1
-      # Note: Rate limiting protects against device code enumeration attacks
-      # Set to false only in development environments for testing
 
-# Global Security Configuration
 security:
   ip-blacklist:
     enabled: true
     block-response-delay-ms: 1000
-    # Note: IP blacklisting prevents access from known malicious IPs
-    # Set enabled to false to disable IP blacklist checking
   ip-whitelist:
     enabled: true
     block-response-delay-ms: 1000
     enforce-mode: false
-    # Note: IP whitelisting restricts API access to approved IPs only
-    # Set enabled to true to activate whitelist validation
-    # enforce-mode: true blocks on validation errors, false allows on errors
 
-# Security Headers Configuration (Local Environment)
 app:
   security:
     hsts:
-      max-age-seconds: 31536000  # 1 year
+      max-age-seconds: 31536000
       include-sub-domains: true
     csp:
-      # More permissive CSP for local development
       default-src: "'self'"
       script-src: "'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net"
       style-src: "'self' 'unsafe-inline' https://cdn.jsdelivr.net"
@@ -109,25 +86,24 @@ app:
         - "https://local.codzs.com:4200"
         - "https://local.codzs.com:8001"
         - "https://local.codzs.com:8004"
-        - "https://local.codzs.com:5002"  # Config server
-        - "http://localhost:4200"      # Allow localhost for dev
-        - "http://127.0.0.1:4200"      # Allow IP for dev
+        - "https://local.codzs.com:5002"
+        - "http://localhost:4200"
+        - "http://127.0.0.1:4200"
       allowed-headers:
         - "Content-Type"
         - "Authorization"
         - "X-Requested-With"
-        - "X-XSRF-TOKEN"               # Additional header for dev
+        - "X-XSRF-TOKEN"
       allowed-methods:
         - "GET"
         - "POST"
         - "OPTIONS"
       allow-credentials: true
-      max-age-seconds: 1800  # 30 minutes
+      max-age-seconds: 1800
   cors:
     allowed-origins: "http://localhost:4200,http://127.0.0.1:4200,https://local.codzs.com:4200,https://local.codzs.com:5002"
     allow-credentials: true
 
-# Resilience4j Configuration for Rate Limiting (Local Environment)
 resilience4j:
   ratelimiter:
     instances:
