@@ -29,6 +29,28 @@ spring:
       save-mode: on_set_attribute
     timeout: 30m
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google-idp:
+            provider: google
+            client-id: ${google.client_id.prod}
+            client-secret: ${google.client_secret.prod}
+            scope: openid, https://www.googleapis.com/auth/userinfo.profile, https://www.googleapis.com/auth/userinfo.email
+            client-name: Sign in with Google
+          github-idp:
+            provider: github
+            client-id: ${github.client_id.prod}
+            client-secret: ${github.client_secret.prod}
+            scope: user:email, read:user
+            client-name: Sign in with GitHub
+        provider:
+          google:
+            user-name-attribute: email
+          github:
+            user-name-attribute: login
+
 management:
   server:
     base:
@@ -103,29 +125,6 @@ app:
     allowed-origins: "https://production.codzs.com:4200,https://production.codzs.com:5002"
     allow-credentials: true
 
-# OAuth2 Client Configuration (Production Environment)  
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          google-idp:
-            provider: google
-            client-id: ${google.client_id.prod}
-            client-secret: ${google.client_secret.prod}
-            scope: openid, https://www.googleapis.com/auth/userinfo.profile, https://www.googleapis.com/auth/userinfo.email
-            client-name: Sign in with Google
-          github-idp:
-            provider: github
-            client-id: ${github.client_id.prod}
-            client-secret: ${github.client_secret.prod}
-            scope: user:email, read:user
-            client-name: Sign in with GitHub
-        provider:
-          google:
-            user-name-attribute: email
-          github:
-            user-name-attribute: login
 
 # Device Authorization Security Configuration
 device:
