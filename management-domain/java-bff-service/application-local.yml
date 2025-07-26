@@ -13,6 +13,19 @@ management:
     base:
       url: https://local.codzs.com:${management.server.port}
 
+spring:
+  data:
+    redis:
+      host: ${codzs.redis.host}
+      port: ${codzs.redis.port}
+  session:
+    store-type: redis
+    redis:
+      namespace: "bff-service:sessions"
+      flush-mode: on_save
+      save-mode: on_set_attribute
+    timeout: 30m
+
 logging:
   level:
     org.springframework.security: DEBUG
