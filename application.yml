@@ -62,8 +62,8 @@ springdoc:
   swagger-ui:
     enabled: true
     path: /swagger-ui.html
-  show-actuator: true
-  use-management-port: true
+  show-actuator: false
+  use-management-port: false
 # End: OpenApi
 
 # Start: Enable SSL on localhost
