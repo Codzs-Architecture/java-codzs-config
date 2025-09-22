@@ -6,9 +6,9 @@ spring:
           management-base-url: ${management.server.base.url}
           metadata:
             user:
-              name: resource-service-user
-              password: ${resource.server.secret}
-
+              name: ${spring.security.user.name}
+              password: ${spring.security.user.password}
+ 
 management:
   server:
     base:
