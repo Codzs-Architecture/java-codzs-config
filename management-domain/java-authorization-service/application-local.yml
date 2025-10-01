@@ -12,9 +12,9 @@ authorization:
 spring:
   data:
     mongodb:
-      host: ${authorization.mongodb.host}
-      port: ${authorization.mongodb.port}
-      database: ${authorization.mongodb.database}
+      host: ${authorization.mongodb.host:localhost}
+      port: ${authorization.mongodb.port:27017}
+      database: ${authorization.mongodb.database:authorization}
       username: ${authorization.mongodb.username}
       password: ${authorization.mongodb.password}
   session:
