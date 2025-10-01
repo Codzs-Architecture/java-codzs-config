@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/authorization
+
+mongock:
+  migration-scan-package: com.codzs.migration
+  enabled: true

@@ -12,6 +12,7 @@ authorization:
 spring:
   data:
     mongodb:
+      uri: mongodb://localhost:27017/authorization
       host: ${authorization.mongodb.host:localhost}
       port: ${authorization.mongodb.port:27017}
       database: ${authorization.mongodb.database:authorization}
