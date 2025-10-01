@@ -9,11 +9,13 @@ spring:
               name: ${spring.security.user.name}
               password: ${spring.security.user.password}
 
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${authorization.mysql.host}:${authorization.mysql.port}/authorization
-    username: ${authorization.mysql.username}
-    password: ${authorization.mysql.password}
+  data:
+    mongodb:
+      host: ${authorization.mongodb.host}
+      port: ${authorization.mongodb.port}
+      database: ${authorization.mongodb.database}
+      username: ${authorization.mongodb.username}
+      password: ${authorization.mongodb.password}
 
   session:
     store-type: redis
@@ -49,15 +51,14 @@ management:
   server:
     base:
       url: https://local.codzs.com:${management.server.port}
-  jpa:
-    generate-ddl: false
   data:
     redis:
       host: ${authorization.redis.host}
       port: ${authorization.redis.port}
 
-hibernate:
-  show_sql: false
+mongock:
+  migration-scan-package: com.codzs.migration
+  enabled: true
 
 acl:
   redis:
